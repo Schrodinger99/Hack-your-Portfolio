@@ -1,27 +1,72 @@
 [
     {
-        "nombre": "Comunidad de Tecnología",
-        "descripcion": "Una comunidad para los amantes de la tecnología.",
-        "topicos": [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+        "username": "usuario1",
+        "correo": "usuario1@example.com",
+        "nombre": "Usuario Uno",
+        "edad": 25,
+        "topicos_interes": [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0]
     },
     {
-        "nombre": "Comunidad Científica",
-        "descripcion": "Discusiones sobre ciencia y descubrimientos.",
-        "topicos": [0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0]
+        "username": "usuario2",
+        "correo": "usuario2@example.com",
+        "nombre": "Usuario Dos",
+        "edad": 30,
+        "topicos_interes": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0]
     },
     {
-        "nombre": "Fanáticos del Deporte",
-        "descripcion": "Un lugar para hablar sobre todos los deportes.",
-        "topicos": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1]
+        "username": "usuario3",
+        "correo": "usuario3@example.com",
+        "nombre": "Usuario Tres",
+        "edad": 22,
+        "topicos_interes": [1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0]
     },
     {
-        "nombre": "Artistas Unidos",
-        "descripcion": "Para aquellos que disfrutan del arte en todas sus formas.",
-        "topicos": [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0]
+        "username": "usuario4",
+        "correo": "usuario4@example.com",
+        "nombre": "Usuario Cuatro",
+        "edad": 28,
+        "topicos_interes": [0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0]
     },
     {
-        "nombre": "Exploradores de Viajes",
-        "descripcion": "Compartiendo experiencias de viaje y destinos.",
-        "topicos": [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+        "username": "usuario5",
+        "correo": "usuario5@example.com",
+        "nombre": "Usuario Cinco",
+        "edad": 35,
+        "topicos_interes": [1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1]
+    },
+    {
+        "username": "usuario6",
+        "correo": "usuario6@example.com",
+        "nombre": "Usuario Seis",
+        "edad": 24,
+        "topicos_interes": [0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1]
+    },
+    {
+        "username": "usuario7",
+        "correo": "usuario7@example.com",
+        "nombre": "Usuario Siete",
+        "edad": 29,
+        "topicos_interes": [0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0]
+    },
+    {
+        "username": "usuario8",
+        "correo": "usuario8@example.com",
+        "nombre": "Usuario Ocho",
+        "edad": 27,
+        "topicos_interes": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0]
+    },
+    {
+        "username": "usuario9",
+        "correo": "usuario9@example.com",
+        "nombre": "Usuario Nueve",
+        "edad": 33,
+        "topicos_interes": [1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0]
+    },
+    {
+        "username": "usuario10",
+        "correo": "usuario10@example.com",
+        "nombre": "Usuario Diez",
+        "edad": 31,
+        "topicos_interes": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0]
     }
 ]
