@@ -1,0 +1,27 @@
+[
+    {
+        "username": "Sebas1",
+        "correo": "correo@ejemplo.com",
+        "nombre": "Si",
+        "edad": 88888,
+        "topicos_interes": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "created_at": "2024-07-12 17:42:34.232790",
+        "_id": "6691bf6ac02ac4619cda40a5"
+    }
+]
