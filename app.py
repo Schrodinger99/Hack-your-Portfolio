@@ -10,7 +10,7 @@ MIN_EDAD = 18
 MAX_EDAD = 100
 
 # Configuración de la conexión a la base de datos MongoDB
-MONGO_URI = os.getenv('MONGO_URI', 'mongodb://localhost:27017/')
+MONGO_URI = os.getenv('MONGO_URI', 'mongodb+srv://salvarfu:vOWG6LdJNqHz0jrQ@hyp.mbnrggl.mongodb.net/?retryWrites=true&w=majority&appName=HYP')
 client = MongoClient(MONGO_URI)
 db = client['sistema_mensajeria']
 users_collection = db['usuarios']
