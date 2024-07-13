@@ -1,130 +1,27 @@
 [
     {
-        "nombre": "Comunidad de Tecnolog\u00eda",
-        "descripcion": "Una comunidad para los amantes de la tecnolog\u00eda.",
-        "topicos": [
-            1,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0
-        ]
+        "nombre": "Comunidad de Tecnología",
+        "descripcion": "Una comunidad para los amantes de la tecnología.",
+        "topicos": [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
     },
     {
-        "nombre": "Comunidad Cient\u00edfica",
+        "nombre": "Comunidad Científica",
         "descripcion": "Discusiones sobre ciencia y descubrimientos.",
-        "topicos": [
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0
-        ]
+        "topicos": [0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0]
     },
     {
-        "nombre": "Fan\u00e1ticos del Deporte",
+        "nombre": "Fanáticos del Deporte",
         "descripcion": "Un lugar para hablar sobre todos los deportes.",
-        "topicos": [
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            1
-        ]
+        "topicos": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1]
     },
     {
         "nombre": "Artistas Unidos",
         "descripcion": "Para aquellos que disfrutan del arte en todas sus formas.",
-        "topicos": [
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            1,
-            0,
-            0
-        ]
+        "topicos": [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0]
     },
     {
         "nombre": "Exploradores de Viajes",
         "descripcion": "Compartiendo experiencias de viaje y destinos.",
-        "topicos": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            1,
-            1,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-        ]
-    },
-    {
-        "name": "Comunidad de Prueba 1",
-        "description": "Test",
-        "topicos": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "created_at": "2024-07-12 17:49:19.655948",
-        "_id": "6691c0ff3c3d7b944fda0ddd"
+        "topicos": [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0]
     }
 ]
