@@ -1,27 +1,27 @@
 [
     {
-        "username": "Sebas1",
-        "correo": "correo@ejemplo.com",
-        "nombre": "Si",
-        "edad": 88888,
-        "topicos_interes": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "created_at": "2024-07-12 17:42:34.232790",
-        "_id": "6691bf6ac02ac4619cda40a5"
+        "nombre": "Comunidad de Tecnología",
+        "descripcion": "Una comunidad para los amantes de la tecnología.",
+        "topicos": [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+    },
+    {
+        "nombre": "Comunidad Científica",
+        "descripcion": "Discusiones sobre ciencia y descubrimientos.",
+        "topicos": [0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0]
+    },
+    {
+        "nombre": "Fanáticos del Deporte",
+        "descripcion": "Un lugar para hablar sobre todos los deportes.",
+        "topicos": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1]
+    },
+    {
+        "nombre": "Artistas Unidos",
+        "descripcion": "Para aquellos que disfrutan del arte en todas sus formas.",
+        "topicos": [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0]
+    },
+    {
+        "nombre": "Exploradores de Viajes",
+        "descripcion": "Compartiendo experiencias de viaje y destinos.",
+        "topicos": [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0]
     }
 ]
