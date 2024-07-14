@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Mensaje</title>
+</head>
+<body>
+    <h1>Enviar Mensaje</h1>
+    <form action="/mensajes" method="POST">
+        <div>
+            <label for="receiver">Destinatario:</label>
+            <input type="text" id="receiver" name="receiver" required>
+        </div>
+        <div>
+            <label for="community">Comunidad (opcional):</label>
+            <input type="text" id="community" name="community">
+        </div>
+        <div>
+            <label for="content">Contenido del Mensaje:</label>
+            <textarea id="content" name="content" required></textarea>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

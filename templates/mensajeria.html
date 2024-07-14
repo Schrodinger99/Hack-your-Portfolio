@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communify</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        .header, .footer {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: #f1f1f1;
+        }
+        main {
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 0;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Communify</h1>
+            <h2>What are we gonna learn about today, {{ username }}?</h2>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+        <main>
+            <h2>Your Mentors</h2>
+            <ul>
+                {% for chat in chats_directos %}
+                    <li><a href="{{ url_for('obtener_chat_con_usuario', usuario=chat) }}">{{ chat }}</a></li>
+                {% endfor %}
+                
+            </ul>
+            <h2>Agoras</h2>
+            <ul>
+                {% for recomendacion in recomendaciones %}
+                    <li><a href="{{ url_for('mostrar_comunidad', comunidad=recomendacion) }}">{{ recomendacion }}</a></li>
+                {% endfor %}
+            </ul>
+            
+        </main>
+        <div class="footer">
+            <p>&copy; 2024 Aplicación Web</p>
+        </div>
+    </div>
+    <script>
+        document.querySelector('.button').addEventListener('click', function() {
+            var usuario = prompt('Ingrese el nombre de usuario para el nuevo mensaje:');
+            if (usuario) {
+                window.location.href = `{{ url_for('obtener_chat_con_usuario', usuario='') }}${usuario}`;
+            }
+        });
+    </script>
+</body>
+</html>

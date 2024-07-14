@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidades Recomendadas</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Comunidades Recomendadas</h2>
+        <ul class="list-group">
+            {% for comunidad in comunidades %}
+                <li class="list-group-item">
+                    <strong>{{ comunidad.nombre }}</strong>
+                    <p>{{ comunidad.descripcion }}</p>
+                    <a href="{{ url_for('unirse_comunidad', id=comunidad.id) }}" class="btn btn-primary">Unirse</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html

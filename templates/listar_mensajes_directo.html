@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chats Directos</title>
+</head>
+<body>
+    <h1>Chats Directos</h1>
+    <ul>
+        {% for chat in chats_directos %}
+            <li><a href="{{ url_for('obtener_chat_con_usuario', usuario=chat) }}">{{ chat }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
