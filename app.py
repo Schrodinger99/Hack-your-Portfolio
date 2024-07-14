@@ -3,25 +3,23 @@ import os
 import re
 import datetime
 from pymongo import MongoClient, errors
+from Recommend import Recommend
 
-# Definimos constantes necesarias para la validación
 EMAIL_REGEX = r"^[\w\.-]+@[\w\.-]+\.\w+$"
 MIN_EDAD = 18
 MAX_EDAD = 100
 
-# Configuración de la conexión a la base de datos MongoDB
-MONGO_URI = os.getenv('MONGO_URI', 'mongodb+srv://salvarfu:vOWG6LdJNqHz0jrQ@hyp.mbnrggl.mongodb.net/?retryWrites=true&w=majority&appName=HYP')
+MONGO_URI = os.getenv('MONGO_URI', 'mongodb+srv://ivancz:nlZhpOlsRRlZq3pV@cluster0.nq3x0sh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 client = MongoClient(MONGO_URI)
-db = client['sistema_mensajeria']
-users_collection = db['usuarios']
-communities_collection = db['comunidades']
-messages_collection = db['mensajes']
-topics_collection = db['topicos']
+db = client['Platform']
+users_collection = db['users']
+communities_collection = db['communities']
+messages_collection = db['messages']
+topics_collection = db['topics']
 
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY', 'secret_key')
 
-# Función para inicializar tópicos en la base de datos si no existen
 def inicializar_topicos():
     topicos = [
         {"id": 1, "nombre": "Tecnología"},
@@ -43,10 +41,8 @@ def inicializar_topicos():
     if topics_collection.count_documents({}) == 0:
         topics_collection.insert_many(topicos)
 
-# Inicializar tópicos
 inicializar_topicos()
 
-# Función para validar un usuario
 def validar_usuario(data):
     if not data.get('username'):
         return "El nombre de usuario es obligatorio."
@@ -63,8 +59,6 @@ def validar_usuario(data):
 def convertir_topicos_a_tupla(topicos_seleccionados):
     topicos = [t["id"] for t in topics_collection.find({})]
     return tuple(1 if int(topico) in topicos_seleccionados else 0 for topico in topicos)
-
-# Rutas de la aplicación
 
 @app.route('/')
 def inicio():
@@ -128,11 +122,8 @@ def logout():
 
 @app.route('/mensajes', methods=['POST'])
 def enviar_mensaje():
-    """
-    Envía un mensaje a un usuario o comunidad.
-    """
     data = request.form
-    sender = session.get('username')
+    sender = session['username']
     receiver = data.get('receiver')
     content = data.get('content')
     community = data.get('community')
@@ -181,9 +172,6 @@ def obtener_comunidades_usuario(username):
 
 @app.route('/mensajes/directo/<usuario>', methods=['GET'])
 def obtener_chat_con_usuario(usuario):
-    """
-    Obtiene el historial de mensajes con un usuario específico.
-    """
     username = session.get('username')
     if not username:
         return jsonify({"error": "Debe iniciar sesión."}), 401
@@ -200,9 +188,6 @@ def obtener_chat_con_usuario(usuario):
 
 @app.route('/mensajes/comunidad/<community>', methods=['GET'])
 def obtener_mensajes_comunidad(community):
-    """
-    Obtiene el historial de mensajes de una comunidad.
-    """
     mensajes = list(messages_collection.find({
         "community": community
     }).sort("timestamp", 1))
@@ -211,25 +196,17 @@ def obtener_mensajes_comunidad(community):
 
 @app.route('/topicos', methods=['GET'])
 def obtener_topicos():
-    """
-    Obtiene la lista de tópicos.
-    """
     topicos = list(topics_collection.find({}, {"_id": 0, "id": 1, "nombre": 1}))
     return jsonify([{"id": t["id"], "nombre": t["nombre"]} for t in topicos]), 200
 
 @app.route('/comunidades', methods=['GET'])
 def mostrar_comunidades():
-    """
-    Muestra todas las comunidades existentes.
-    """
-    comunidades = list(communities_collection.find())
+    username = session.get("username")
+    comunidades = Recommend(username)
     return render_template('comunidades.html', comunidades=comunidades)
 
 @app.route('/comunidades/<comunidad>')
 def mostrar_comunidad(comunidad):
-    """
-    Muestra los detalles de una comunidad específica.
-    """
     comunidad = communities_collection.find_one({"name": comunidad})
     if not comunidad:
         return render_template('404.html'), 404
@@ -238,9 +215,6 @@ def mostrar_comunidad(comunidad):
 
 @app.route('/comunidades/unirse', methods=['POST'])
 def unirse_a_comunidad():
-    """
-    Permite a un usuario unirse a una comunidad existente.
-    """
     data = request.form
     username = session.get('username')
     community_name = data.get('community_name')
@@ -260,11 +234,7 @@ def unirse_a_comunidad():
     users_collection.update_one({"username": username}, {"$set": {"communities": user["communities"]}})
     return redirect(url_for('mostrar_comunidad', comunidad=community_name))
 
-@app.route('/chats/directos', methods=['GET'])
 def obtener_chats_directos(username):
-    """
-    Obtiene la lista de chats directos del usuario.
-    """
     mensajes = messages_collection.find({
         "$or": [
             {"sender": username},
@@ -283,9 +253,6 @@ def obtener_chats_directos(username):
 
 @app.route('/usuarios/buscar', methods=['GET'])
 def buscar_usuarios():
-    """
-    Busca usuarios por nombre de usuario.
-    """
     query = request.args.get('query')
     if not query:
         return jsonify({"error": "Debe proporcionar un término de búsqueda."}), 400
@@ -295,9 +262,6 @@ def buscar_usuarios():
 
 @app.route('/amigos/anadir', methods=['POST'])
 def anadir_amigo():
-    """
-    Añade un amigo a la lista de amigos del usuario.
-    """
     data = request.form
     username = session.get('username')
     amigo_username = data.get('amigo_username')
@@ -320,7 +284,6 @@ def anadir_amigo():
     users_collection.update_one({"username": username}, {"$set": {"amigos": user["amigos"]}})
     return redirect(url_for('mensajeria'))
 
-# Manejo de errores
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
@@ -331,6 +294,6 @@ def internal_server_error(e):
 
 if __name__ == '__main__':
     try:
-        app.run(debug=True)
+        app.run(debug=True, port=5001)
     except Exception as e:
         print(f"An error occurred: {e}")
