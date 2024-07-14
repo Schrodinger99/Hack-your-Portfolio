@@ -22,21 +22,21 @@ app.secret_key = os.getenv('SECRET_KEY', 'secret_key')
 
 def inicializar_topicos():
     topicos = [
-        {"id": 1, "nombre": "Tecnología"},
-        {"id": 2, "nombre": "Ciencia"},
-        {"id": 3, "nombre": "Deportes"},
-        {"id": 4, "nombre": "Arte"},
-        {"id": 5, "nombre": "Música"},
-        {"id": 6, "nombre": "Viajes"},
-        {"id": 7, "nombre": "Comida"},
-        {"id": 8, "nombre": "Finanzas"},
-        {"id": 9, "nombre": "Educación"},
-        {"id": 10, "nombre": "Cine"},
-        {"id": 11, "nombre": "Literatura"},
-        {"id": 12, "nombre": "Moda"},
-        {"id": 13, "nombre": "Juegos"},
-        {"id": 14, "nombre": "Salud"},
-        {"id": 15, "nombre": "Tecnología Espacial"}
+        {"id": 1, "nombre": "Technology"},
+        {"id": 2, "nombre": "Science"},
+        {"id": 3, "nombre": "Sports"},
+        {"id": 4, "nombre": "Art"},
+        {"id": 5, "nombre": "Music"},
+        {"id": 6, "nombre": "Trips"},
+        {"id": 7, "nombre": "Food"},
+        {"id": 8, "nombre": "Finance"},
+        {"id": 9, "nombre": "Education"},
+        {"id": 10, "nombre": "Films"},
+        {"id": 11, "nombre": "Literature"},
+        {"id": 12, "nombre": "Fashion"},
+        {"id": 13, "nombre": "Video-Games"},
+        {"id": 14, "nombre": "Health"},
+        {"id": 15, "nombre": "Space Technology"}
     ]
     if topics_collection.count_documents({}) == 0:
         topics_collection.insert_many(topicos)
@@ -113,7 +113,8 @@ def mensajeria():
         return redirect(url_for('login'))
     username = session['username']
     chats_directos = obtener_chats_directos(username)
-    return render_template('mensajeria.html', username=username, chats_directos=chats_directos)
+    recomendaciones = Recommend(username)
+    return render_template('mensajeria.html', username=username, chats_directos=chats_directos, recomendaciones=recomendaciones)
 
 @app.route('/logout')
 def logout():
@@ -292,6 +293,8 @@ def anadir_amigo():
     user["amigos"].append(amigo_username)
     users_collection.update_one({"username": username}, {"$set": {"amigos": user["amigos"]}})
     return redirect(url_for('mensajeria'))
+
+
 
 @app.errorhandler(404)
 def page_not_found(e):
